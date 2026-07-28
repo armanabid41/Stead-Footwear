@@ -42,7 +42,8 @@ export interface Brand {
   name: string
 }
 
-const img = (seed: string) => `https://picsum.photos/seed/${seed}/800/800`
+const PICSUM = 'https://picsum.photos/seed/'
+const img = (seed: string) => PICSUM + seed + '/800/800'
 
 export const categories: Category[] = [
   { id: 'audio', name: 'Audio', description: 'Headphones, earbuds & speakers', image: img('audio-cat') },
