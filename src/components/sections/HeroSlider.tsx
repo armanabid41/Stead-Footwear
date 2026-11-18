@@ -6,28 +6,28 @@ import { Button } from '@/components/ui/button'
 
 const slides = [
   {
-    title: 'Sound without limits',
-    subtitle: 'Studio-grade audio, engineered for everyday life.',
-    cta: 'Shop Audio',
-    to: '/shop?category=audio',
-    image: 'https://picsum.photos/seed/hero-audio/1600/900',
-    accent: 'from-violet-700/80',
+    title: 'Step into Comfort',
+    subtitle: 'Premium sneakers designed for your everyday hustle.',
+    cta: 'Shop Sneakers',
+    to: '/shop?category=sneakers',
+    image: 'https://picsum.photos/seed/hero-sneakers/1600/900', // Pore ashol chobir link dibe
+    accent: 'from-neutral-900/90', // Deep black/gray premium vibe
   },
   {
-    title: 'Wear the future',
-    subtitle: 'Smartwatches that keep up with every ambition.',
-    cta: 'Shop Wearables',
-    to: '/shop?category=wearables',
-    image: 'https://picsum.photos/seed/hero-wear/1600/900',
-    accent: 'from-sky-700/80',
+    title: 'Crafted for Elegance',
+    subtitle: 'Handmade leather formal shoes for the perfect impression.',
+    cta: 'Shop Formal',
+    to: '/shop?category=formal',
+    image: 'https://picsum.photos/seed/hero-formal/1600/900', // Pore ashol chobir link dibe
+    accent: 'from-stone-800/90', // Earthy/brownish leather vibe
   },
   {
-    title: 'Power your world',
-    subtitle: 'Flagship phones & laptops at demo-store prices.',
-    cta: 'Shop New Arrivals',
-    to: '/shop',
-    image: 'https://picsum.photos/seed/hero-tech/1600/900',
-    accent: 'from-emerald-700/80',
+    title: 'Built to Last',
+    subtitle: 'Durable and stylish boots ready for any adventure.',
+    cta: 'Explore Boots',
+    to: '/shop?category=boots',
+    image: 'https://picsum.photos/seed/hero-boots/1600/900', // Pore ashol chobir link dibe
+    accent: 'from-slate-800/90', // Cool dark slate vibe
   },
 ]
 
@@ -63,7 +63,9 @@ export function HeroSlider() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="max-w-lg text-white"
             >
-              <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">New Season</span>
+              <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">
+                New Arrivals
+              </span>
               <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-6xl">{s.title}</h1>
               <p className="mt-4 text-base text-white/90 md:text-lg">{s.subtitle}</p>
               <Button asChild size="lg" className="mt-6 bg-white text-neutral-900 hover:bg-white/90">

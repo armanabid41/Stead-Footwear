@@ -48,31 +48,32 @@ function load<T>(key: string, fallback: T): T {
 }
 
 export function ShopProvider({ children }: { children: ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>(() => load('luxe-cart', []))
+  // Brand name update kora hoyeche 'luxe' theke 'stead' e
+  const [cart, setCart] = useState<CartItem[]>(() => load('stead-cart', []))
   const [wishlist, setWishlist] = useState<number[]>(() =>
-    load('luxe-wishlist', []),
+    load('stead-wishlist', []),
   )
   const [compare, setCompare] = useState<number[]>(() =>
-    load('luxe-compare', []),
+    load('stead-compare', []),
   )
 
   useEffect(() => {
-    localStorage.setItem('luxe-cart', JSON.stringify(cart))
+    localStorage.setItem('stead-cart', JSON.stringify(cart))
   }, [cart])
   useEffect(() => {
-    localStorage.setItem('luxe-wishlist', JSON.stringify(wishlist))
+    localStorage.setItem('stead-wishlist', JSON.stringify(wishlist))
   }, [wishlist])
   useEffect(() => {
-    localStorage.setItem('luxe-compare', JSON.stringify(compare))
+    localStorage.setItem('stead-compare', JSON.stringify(compare))
   }, [compare])
 
   const addToCart: ShopContextValue['addToCart'] = (productId, options) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.productId === productId)
+      const existing = prev.find((i) => i.productId === productId && i.size === options?.size && i.color === options?.color)
       const quantity = options?.quantity ?? 1
       if (existing) {
         return prev.map((i) =>
-          i.productId === productId
+          (i.productId === productId && i.size === options?.size && i.color === options?.color)
             ? { ...i, quantity: i.quantity + quantity }
             : i,
         )

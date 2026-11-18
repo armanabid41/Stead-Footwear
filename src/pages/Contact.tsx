@@ -3,6 +3,14 @@ import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elementName: string]: any
+    }
+  }
+}
+
 export default function Contact() {
   const [sent, setSent] = useState(false)
   const submit = (e: FormEvent) => {
