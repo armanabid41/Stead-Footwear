@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXE — Premium Tech Store</title>
-<meta name="description" content="LUXE is a premium eCommerce demo store featuring audio, wearables, phones, laptops, cameras and accessories.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128142;</text></svg>">
+<title>STEAD — Premium Footwear</title>
+<meta name="description" content="STEAD is a premium footwear store featuring sneakers, formal shoes, and boots.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#12437;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f7fb; --surface:#fff; --card:#fff; --text:#0e1116; --muted:#5b6472;
-  --border:#e6e8ee; --primary:#6d28d9; --accent:#f43f5e;
+  --border:#e6e8ee; --primary:#4b3621; /* Brownish */ --accent:#111827; /* Dark */
   --shadow:0 10px 30px rgba(16,17,22,.08); --radius:18px; --max:1200px;
 }
 html[data-theme="dark"]{
   --bg:#0b0d12; --surface:#12151c; --card:#151922; --text:#eef1f6; --muted:#9aa4b2;
-  --border:#232838; --primary:#8b5cf6; --accent:#fb7185;
+  --border:#232838; --primary:#a38068; --accent:#374151;
   --shadow:0 12px 40px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
@@ -37,6 +37,8 @@ img{max-width:100%;display:block}
 .btn.ghost{background:transparent;border-color:var(--border);color:var(--text)}
 .btn.ghost:hover{border-color:var(--primary);color:var(--primary)}
 .btn.block{width:100%}
+.btn.whatsapp{background:#25D366; color:#fff; border-color:#25D366;} /* WhatsApp Color */
+.btn.whatsapp:hover{filter:brightness(1.05);}
 .btn.sm{padding:8px 12px;font-size:13px;border-radius:10px}
 .pill{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;font-family:inherit}
 .pill:hover{border-color:var(--primary);color:var(--primary)}
@@ -58,13 +60,13 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--surface);border-bot
 .mobile-menu{display:none;flex-direction:column;padding:10px 20px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
 .mobile-menu.show{display:flex}
 .mobile-menu a{padding:10px 12px;border-radius:10px;font-weight:600}
-.hero{position:relative;overflow:hidden;border-radius:26px;margin-top:26px;background:linear-gradient(135deg,#2a1055,#6d28d9 55%,#db2777);color:#fff;padding:56px 44px}
+.hero{position:relative;overflow:hidden;border-radius:26px;margin-top:26px;background:linear-gradient(135deg,#111827,#374151 55%,#4b3621);color:#fff;padding:56px 44px}
 .hero h1{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
-.hero p{max-width:520px;color:#eadcff;font-size:17px;margin:0 0 26px}
-.hero .btn{background:#fff;color:#4c1d95}
+.hero p{max-width:520px;color:#e5e7eb;font-size:17px;margin:0 0 26px}
+.hero .btn{background:#fff;color:#111827}
 .hero .btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
 .hero-badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
-.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} /* 3 cats for shoes */
 .cat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 12px;text-align:center;cursor:pointer;transition:.18s}
 .cat:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--primary)}
 .cat .emoji{font-size:26px}
@@ -72,7 +74,7 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--surface);border-bot
 .products{grid-template-columns:repeat(4,1fr)}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column;position:relative}
 .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.thumb{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(135deg,#c7d2fe,#f5d0fe);cursor:pointer}
+.thumb{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(135deg,#e5e7eb,#d1d5db);cursor:pointer}
 .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
 .card:hover .thumb img{transform:scale(1.07)}
 .badge{position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;z-index:2}
@@ -87,7 +89,7 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--surface);border-bot
 .price b{font-size:18px}
 .price s{color:var(--muted);font-size:13px}
 .card .body .btn{margin-top:auto}
-.flash{background:linear-gradient(120deg,#111827,#3b0764);color:#fff;border-radius:var(--radius);padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.flash{background:linear-gradient(120deg,#111827,#4b3621);color:#fff;border-radius:var(--radius);padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .timer{display:flex;gap:10px}
 .timer div{background:rgba(255,255,255,.13);border-radius:12px;padding:8px 12px;text-align:center;min-width:58px}
 .timer b{display:block;font-size:22px;font-weight:800}
@@ -119,7 +121,7 @@ footer{border-top:1px solid var(--border);background:var(--surface);margin-top:4
 .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
 .select{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit}
 .pdp{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
-.gallery{background:linear-gradient(135deg,#c7d2fe,#f5d0fe);border-radius:22px;overflow:hidden;aspect-ratio:1/1}
+.gallery{background:linear-gradient(135deg,#e5e7eb,#d1d5db);border-radius:22px;overflow:hidden;aspect-ratio:1/1}
 .gallery img{width:100%;height:100%;object-fit:cover}
 .swatch{width:30px;height:30px;border-radius:50%;border:2px solid var(--border);cursor:pointer}
 .swatch.active{outline:2px solid var(--primary);outline-offset:2px}
@@ -134,7 +136,7 @@ footer{border-top:1px solid var(--border);background:var(--surface);margin-top:4
 .drawer-body{flex:1;overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
 .drawer-foot{border-top:1px solid var(--border);padding:18px 20px}
 .line{display:flex;gap:12px;align-items:center}
-.line img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#c7d2fe,#f5d0fe);flex-shrink:0}
+.line img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#e5e7eb,#d1d5db);flex-shrink:0}
 .line .info{flex:1;min-width:0}
 .line .info b{font-size:14px}
 .line .info div{font-size:13px;color:var(--muted)}
@@ -181,12 +183,12 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 
 <header class="nav">
   <div class="container nav-inner">
-    <a href="#/" class="brand">LUXE</a>
+    <a href="#/" class="brand">STEAD</a>
     <nav class="nav-links" id="navLinks"></nav>
     <div class="nav-actions">
       <div class="search">
         <span>&#128269;</span>
-        <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products">
+        <input id="searchInput" type="search" placeholder="Search shoes..." aria-label="Search products">
       </div>
       <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">&#9789;</button>
       <a class="icon-btn" href="#/wishlist" title="Wishlist" aria-label="Wishlist">&#9825;<span class="count" id="wishCount" hidden>0</span></a>
@@ -203,14 +205,14 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   <div class="container">
     <div class="foot">
       <div>
-        <div class="brand">LUXE</div>
-        <p>Premium tech, curated for people who care about design and detail. This is a front-end demo store.</p>
+        <div class="brand">STEAD</div>
+        <p>Premium footwear designed for ultimate comfort and style. Browse our catalog and order directly via WhatsApp.</p>
       </div>
-      <div><h4>Shop</h4><a href="#/shop">All Products</a><a href="#/shop?cat=audio">Audio</a><a href="#/shop?cat=laptops">Laptops</a><a href="#/shop?cat=phones">Phones</a></div>
+      <div><h4>Shop</h4><a href="#/shop">All Products</a><a href="#/shop?cat=sneakers">Sneakers</a><a href="#/shop?cat=formal">Formal</a></div>
       <div><h4>Company</h4><a href="#/about">About</a><a href="#/contact">Contact</a><a href="#/faq">FAQ</a></div>
-      <div><h4>Support</h4><a href="#/faq">Shipping</a><a href="#/faq">Returns</a><a href="#/contact">Help Center</a></div>
+      <div><h4>Support</h4><a href="#/faq">How to Order</a><a href="#/faq">Shipping & Returns</a><a href="#/contact">Help Center</a></div>
     </div>
-    <div class="foot-bottom">&copy; <span id="yr"></span> LUXE Demo Store. Built as a front-end showcase.</div>
+    <div class="foot-bottom">&copy; <span id="yr"></span> STEAD Footwear. All rights reserved.<br/>Designed & built by <a href="https://github.com/armanabid41" target="_blank" style="color:var(--text);font-weight:500;">Arman Hossain Abid</a></div>
   </div>
 </footer>
 
@@ -225,59 +227,55 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 <script>
 (function(){
   'use strict';
+  // WHATSAPP NUMBER - CHANGE THIS TO YOUR NUMBER
+  var WHATSAPP_NUMBER = "8801700000000"; 
+  
   var PIC = 'https://picsum.photos/seed/';
   function img(seed,s){ return PIC + seed + '/' + (s||700) + '/' + (s||700); }
   var FALLBACK = "this.style.visibility='hidden'";
 
+  // SHOE CATEGORIES
   var CATS = [
-    {id:'audio',name:'Audio',emoji:'\uD83C\uDFA7'},
-    {id:'wearables',name:'Wearables',emoji:'\u231A'},
-    {id:'phones',name:'Phones',emoji:'\uD83D\uDCF1'},
-    {id:'laptops',name:'Laptops',emoji:'\uD83D\uDCBB'},
-    {id:'cameras',name:'Cameras',emoji:'\uD83D\uDCF7'},
-    {id:'accessories',name:'Accessories',emoji:'\uD83C\uDF92'}
+    {id:'sneakers',name:'Sneakers',emoji:'\uD83D\uDC5F'},
+    {id:'formal',name:'Formal',emoji:'\uD83D\uDC5E'},
+    {id:'boots',name:'Boots',emoji:'\uD83E\uDD7E'}
   ];
-  var BRANDS = ['Aurora','Nimbus','Vertex','Lumen','Pulse','Orbit'];
+  var BRANDS = ['Nike','Adidas','Bata','Apex','Local Premium'];
 
+  // DUMMY SHOE DATA (Replace images later)
   var P = [
-    {id:1,n:'Aurora Wireless Headphones',c:'audio',b:'Aurora',p:249,o:329,r:5,rv:214,bd:'Sale',s:'lx-headphone-a',cl:['#111827','#6d28d9','#f43f5e'],fs:1,best:1},
-    {id:2,n:'Nimbus Pro Earbuds',c:'audio',b:'Nimbus',p:149,o:0,r:4,rv:132,bd:'Hot',s:'lx-earbuds-b',cl:['#0ea5e9','#111827'],best:1},
-    {id:3,n:'Vertex Smart Watch S9',c:'wearables',b:'Vertex',p:399,o:459,r:5,rv:301,bd:'Best Seller',s:'lx-watch-c',cl:['#111827','#f59e0b'],fs:1,best:1},
-    {id:4,n:'Pulse Fitness Band',c:'wearables',b:'Pulse',p:89,o:0,r:4,rv:88,bd:'',s:'lx-band-d',cl:['#22c55e','#111827'],nw:1},
-    {id:5,n:'Orbit X Flagship Phone',c:'phones',b:'Orbit',p:1099,o:0,r:5,rv:512,bd:'New',s:'lx-phone-e',cl:['#111827','#e5e7eb','#6d28d9'],nw:1,best:1},
-    {id:6,n:'Lumen Lite 5G',c:'phones',b:'Lumen',p:549,o:629,r:4,rv:176,bd:'Sale',s:'lx-phone-f',cl:['#3b82f6','#111827'],fs:1},
-    {id:7,n:'Vertex UltraBook 14',c:'laptops',b:'Vertex',p:1299,o:0,r:5,rv:143,bd:'',s:'lx-laptop-g',cl:['#9ca3af','#111827'],nw:1},
-    {id:8,n:'Nimbus Air Laptop',c:'laptops',b:'Nimbus',p:999,o:1149,r:4,rv:97,bd:'Sale',s:'lx-laptop-h',cl:['#e5e7eb','#111827'],fs:1},
-    {id:9,n:'Aurora Mirrorless Camera',c:'cameras',b:'Aurora',p:1499,o:0,r:5,rv:64,bd:'New',s:'lx-camera-i',cl:['#111827'],nw:1},
-    {id:10,n:'Lumen Action Cam 4K',c:'cameras',b:'Lumen',p:329,o:399,r:4,rv:120,bd:'Hot',s:'lx-camera-j',cl:['#111827','#f43f5e'],fs:1},
-    {id:11,n:'Orbit Fast Charger 65W',c:'accessories',b:'Orbit',p:49,o:0,r:5,rv:230,bd:'Best Seller',s:'lx-charger-k',cl:['#111827','#e5e7eb'],best:1},
-    {id:12,n:'Pulse Wireless Mouse',c:'accessories',b:'Pulse',p:59,o:79,r:4,rv:154,bd:'Sale',s:'lx-mouse-l',cl:['#111827','#6d28d9'],nw:1}
+    {id:1,n:'Classic Black Oxford',c:'formal',b:'Local Premium',p:2500,o:3000,r:4.8,rv:120,bd:'Best Seller',s:'shoe-oxford',cl:['#000000','#4b3621'],fs:1,best:1},
+    {id:2,n:'Urban White Sneakers',c:'sneakers',b:'Nike',p:3500,o:0,r:4.5,rv:95,bd:'Hot',s:'shoe-sneaker1',cl:['#ffffff','#e5e7eb'],best:1},
+    {id:3,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,o:4800,r:4.9,rv:210,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,best:1},
+    {id:4,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,o:0,r:4.2,rv:65,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1},
+    {id:5,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,o:0,r:4.7,rv:150,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,best:1},
+    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1}
   ];
 
   var REVIEWS = [
-    {nm:'Ayesha R.',rl:'Verified Buyer',t:'The headphones sound unreal and the build quality feels genuinely premium. Shipping was quick too.'},
-    {nm:'Tanvir H.',rl:'Verified Buyer',t:'Bought the Vertex watch and it has replaced my old one completely. Battery easily lasts three days.'},
-    {nm:'Nusrat J.',rl:'Verified Buyer',t:'Clean checkout, honest product photos, and the packaging felt like opening something expensive.'}
+    {nm:'Ayesha R.',rl:'Verified Buyer',t:'The leather quality is exactly as shown. Perfect fit.'},
+    {nm:'Tanvir H.',rl:'Verified Buyer',t:'Great sneakers for everyday use. Delivery was very fast.'},
+    {nm:'Nusrat J.',rl:'Verified Buyer',t:'Ordering via WhatsApp was so easy and transparent. Highly recommended.'}
   ];
 
   var FAQS = [
-    ['Is this a real store?','No \u2014 LUXE is a front-end demo built to showcase UI and interaction design. No payment is processed and no orders are shipped.'],
-    ['How long does delivery take?','In this demo, standard delivery is described as 2\u20134 business days with free shipping over $99.'],
-    ['Can I return an item?','The demo describes a 30-day return window on unused items in original packaging.'],
-    ['Do you ship internationally?','The demo store lists 40+ countries with duties calculated at checkout.'],
-    ['How is my cart saved?','Your cart, wishlist and theme are stored in your own browser using localStorage \u2014 nothing is sent to a server.']
+    ['How do I order?','Just add products to your cart and click "Order via WhatsApp". The details will be sent directly to us.'],
+    ['How long does delivery take?','Standard delivery takes 2-4 business days anywhere in Bangladesh.'],
+    ['Can I return an item?','We offer a 7-day return window for unused items with original packaging.'],
+    ['What are the payment methods?','We accept Cash on Delivery (COD) and mobile banking (bKash, Nagad) via WhatsApp confirmation.']
   ];
 
   function load(k,d){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } }
   function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
-  var cart = load('luxe-cart',[]);
-  var wish = load('luxe-wish',[]);
-  var theme = localStorage.getItem('luxe-theme') || 'light';
+  var cart = load('stead-cart',[]);
+  var wish = load('stead-wish',[]);
+  var theme = localStorage.getItem('stead-theme') || 'light';
   document.documentElement.setAttribute('data-theme',theme);
 
-  function money(n){ return '$' + n.toLocaleString('en-US'); }
+  // Set currency to BDT
+  function money(n){ return '\u09F3 ' + n.toLocaleString('en-IN'); }
   function find(id){ for(var i=0;i<P.length;i++){ if(P[i].id===Number(id)) return P[i]; } return null; }
-  function stars(r){ var o=''; for(var i=0;i<5;i++){ o += i<r ? '\u2605' : '\u2606'; } return o; }
+  function stars(r){ var o=''; for(var i=0;i<5;i++){ o += i<Math.round(r) ? '\u2605' : '\u2606'; } return o; }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function cartCount(){ var t=0; for(var i=0;i<cart.length;i++) t+=cart[i].q; return t; }
   function subtotal(){ var t=0; for(var i=0;i<cart.length;i++){ var pr=find(cart[i].id); if(pr) t+=pr.p*cart[i].q; } return t; }
@@ -302,24 +300,24 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     var hit=null;
     for(var i=0;i<cart.length;i++){ if(cart[i].id===Number(id)) hit=cart[i]; }
     if(hit) hit.q+=q; else cart.push({id:Number(id),q:q});
-    save('luxe-cart',cart); syncBadges();
+    save('stead-cart',cart); syncBadges();
     var pr=find(id); toast((pr?pr.n:'Item')+' added to cart');
     renderDrawer();
   }
   function setQty(id,q){
     if(q<=0){ removeItem(id); return; }
     for(var i=0;i<cart.length;i++){ if(cart[i].id===Number(id)) cart[i].q=q; }
-    save('luxe-cart',cart); syncBadges(); renderDrawer(); if(route().name==='cart') render();
+    save('stead-cart',cart); syncBadges(); renderDrawer(); if(route().name==='cart') render();
   }
   function removeItem(id){
     cart = cart.filter(function(x){ return x.id!==Number(id); });
-    save('luxe-cart',cart); syncBadges(); renderDrawer(); if(route().name==='cart') render();
+    save('stead-cart',cart); syncBadges(); renderDrawer(); if(route().name==='cart') render();
   }
   function toggleWish(id){
     id=Number(id);
     if(wish.indexOf(id)>-1){ wish=wish.filter(function(x){return x!==id;}); toast('Removed from wishlist'); }
     else { wish.push(id); toast('Saved to wishlist'); }
-    save('luxe-wish',wish); syncBadges(); render();
+    save('stead-wish',wish); syncBadges(); render();
   }
 
   function cardHtml(p){
@@ -339,7 +337,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
       '</div></article>';
   }
   function gridHtml(list){
-    if(!list.length) return '<div class="empty"><h3>No products found</h3><p>Try a different search or filter.</p></div>';
+    if(!list.length) return '<div class="empty"><h3>No shoes found</h3><p>Try a different search or filter.</p></div>';
     return '<div class="grid products">'+list.map(cardHtml).join('')+'</div>';
   }
 
@@ -376,33 +374,28 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     return '<div class="container">'+
       '<section class="hero">'+
         '<span class="hero-badge">\u2728 New season drop \u2014 up to 30% off</span>'+
-        '<h1>Premium tech,<br>designed to be felt.</h1>'+
-        '<p>Hand-picked audio, wearables and workhorse machines. Free shipping over $99 and a 30-day no-drama return window.</p>'+
+        '<h1>Step into<br>Comfort & Style.</h1>'+
+        '<p>Hand-picked leather formal shoes, sneakers, and durable boots. Delivered anywhere in Bangladesh.</p>'+
         '<div class="row wrap"><a class="btn" href="#/shop">Shop Collection</a>'+
-        '<a class="btn ghost" href="#/shop?cat=audio">Explore Audio</a></div>'+
+        '<a class="btn ghost" href="#/shop?cat=formal">Explore Formal</a></div>'+
       '</section>'+
-      '<section class="section"><h2 class="h2">Shop by category</h2><p class="sub">Six curated departments, zero filler.</p>'+
-        '<div class="cats">'+CATS.map(function(c){
-          return '<div class="cat" data-go="#/shop?cat='+c.id+'"><div class="emoji">'+c.emoji+'</div><b>'+c.name+'</b></div>';
+      '<section class="section"><h2 class="h2">Shop by category</h2><p class="sub">Curated styles for every occasion.</p>'+
+        '<div class="cats" style="display:flex; justify-content:center; gap:20px;">'+CATS.map(function(c){
+          return '<div class="cat" style="min-width:180px;" data-go="#/shop?cat='+c.id+'"><div class="emoji">'+c.emoji+'</div><b>'+c.name+'</b></div>';
         }).join('')+'</div></section>'+
       '<section class="section" style="padding-top:0"><div class="flash">'+
         '<div><div style="font-weight:800;font-size:20px">\u26A1 Flash Sale</div>'+
-        '<div style="color:#cbd5e1;font-size:14px">Limited units at launch pricing.</div></div>'+
+        '<div style="color:#cbd5e1;font-size:14px">Limited stock at discount pricing.</div></div>'+
         '<div class="timer" id="timer"></div>'+
-        '<a class="btn" href="#/shop?sale=1" style="background:#fff;color:#3b0764">Grab the deals</a>'+
+        '<a class="btn" href="#/shop?sale=1" style="background:#fff;color:#4b3621">Grab the deals</a>'+
       '</div></section>'+
       '<section class="section" style="padding-top:0"><h2 class="h2">Flash sale picks</h2><p class="sub">Ending soon.</p>'+gridHtml(flash)+'</section>'+
       '<section class="section" style="padding-top:0"><h2 class="h2">Best sellers</h2><p class="sub">What everyone is buying this month.</p>'+gridHtml(best)+'</section>'+
-      '<section class="section" style="padding-top:0"><h2 class="h2">New arrivals</h2><p class="sub">Fresh in the door.</p>'+gridHtml(nw)+'</section>'+
-      '<section class="section" style="padding-top:0"><div class="brands">'+BRANDS.map(function(b){return '<div class="brand-chip">'+b.toUpperCase()+'</div>';}).join('')+'</div></section>'+
-      '<section class="section" style="padding-top:0"><h2 class="h2">Loved by customers</h2><p class="sub">A few words from the demo crowd.</p>'+
+      '<section class="section" style="padding-top:0"><h2 class="h2">Loved by customers</h2><p class="sub">A few words from our satisfied buyers.</p>'+
         '<div class="grid reviews">'+REVIEWS.map(function(r){
           return '<div class="review"><div class="stars">'+stars(5)+'</div><p>'+esc(r.t)+'</p>'+
             '<div class="rev-user"><div class="av">'+esc(r.nm.charAt(0))+'</div><div><b>'+esc(r.nm)+'</b><span>'+esc(r.rl)+'</span></div></div></div>';
         }).join('')+'</div></section>'+
-      '<section class="section" style="padding-top:0"><div class="news"><h2>Get 10% off your first order</h2>'+
-        '<p>Join the list for launches and quiet little discounts.</p>'+
-        '<form id="newsForm"><input type="email" required placeholder="you@example.com" aria-label="Email"><button class="btn" type="submit">Subscribe</button></form></div></section>'+
     '</div>';
   }
 
@@ -428,7 +421,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
             var kv=o.split('|'); return '<option value="'+kv[0]+'"'+(sort===kv[0]?' selected':'')+'>'+kv[1]+'</option>';
           }).join('')+
         '</select></div>'+
-      '<p class="sub">'+list.length+' product'+(list.length===1?'':'s')+(q?' for \u201c'+esc(q)+'\u201d':'')+'</p>'+
+      '<p class="sub">'+list.length+' item'+(list.length===1?'':'s')+(q?' for \u201c'+esc(q)+'\u201d':'')+'</p>'+
       gridHtml(list)+'</section></div>';
   }
 
@@ -446,7 +439,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
           '<h1 style="font-family:\'Plus Jakarta Sans\',Inter,sans-serif;font-size:30px;margin:6px 0 8px;letter-spacing:-.02em">'+esc(p.n)+'</h1>'+
           '<div class="row"><span class="stars">'+stars(p.r)+'</span><span style="color:var(--muted);font-size:14px">'+p.rv+' reviews</span></div>'+
           '<div class="price" style="margin:14px 0"><b style="font-size:30px">'+money(p.p)+'</b>'+(p.o?'<s>'+money(p.o)+'</s>':'')+(p.o?'<span style="color:#16a34a;font-weight:700;font-size:14px">Save '+money(p.o-p.p)+'</span>':'')+'</div>'+
-          '<p style="color:var(--muted)">Engineered with precision materials and tuned for everyday use. This is demo copy showing how a full product description would sit on the page.</p>'+
+          '<p style="color:var(--muted)">Premium quality footwear, designed for maximum comfort and durability.</p>'+
           '<div style="margin:18px 0"><div class="cat-tag" style="margin-bottom:8px">Color</div><div class="row" id="swatches">'+
             p.cl.map(function(c,i){ return '<button class="swatch'+(i===0?' active':'')+'" data-sw="'+i+'" style="background:'+c+'" aria-label="Color option"></button>'; }).join('')+
           '</div></div>'+
@@ -456,7 +449,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
             '<button class="btn ghost" data-wish="'+p.id+'">'+(on?'\u2665 Saved':'\u2661 Wishlist')+'</button>'+
           '</div>'+
           '<div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">'+
-            ['\uD83D\uDE9A Free shipping over $99','\u21A9 30-day returns','\uD83D\uDD12 2-year warranty','\u2705 In stock, ships today'].map(function(t){
+            ['\uD83D\uDE9A Delivery anywhere in BD','\u21A9 7-day returns','\u2705 Premium Material','\uD83D\uDCF2 Direct WhatsApp Order'].map(function(t){
               return '<div style="font-size:13px;color:var(--muted)">'+t+'</div>';
             }).join('')+
           '</div>'+
@@ -466,8 +459,25 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     '</div>';
   }
 
+  function generateWhatsAppLink(){
+      var msg = "Hello STEAD Footwear,\nI want to order the following items:\n\n";
+      cart.forEach(function(it){
+          var p = find(it.id);
+          if(p) {
+              msg += "- " + p.n + " (x" + it.q + ") = " + money(p.p * it.q) + "\n";
+          }
+      });
+      var sub = subtotal();
+      var ship = 60; // Assuming standard delivery charge
+      msg += "\n*Subtotal:* " + money(sub);
+      msg += "\n*Delivery:* " + money(ship);
+      msg += "\n*Total:* " + money(sub + ship);
+      msg += "\n\nPlease let me know the payment procedure.";
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+  }
+
   function cartView(){
-    if(!cart.length) return '<div class="container"><div class="empty" style="padding:80px 20px"><h1>Your cart is empty</h1><p>Once you add something, it will show up here.</p><a class="btn" href="#/shop">Start shopping</a></div></div>';
+    if(!cart.length) return '<div class="container"><div class="empty" style="padding:80px 20px"><h1>Your cart is empty</h1><p>Add some shoes to place an order via WhatsApp.</p><a class="btn" href="#/shop">Start shopping</a></div></div>';
     var rows=cart.map(function(it){
       var p=find(it.id); if(!p) return '';
       return '<div class="line" style="padding:14px 0;border-bottom:1px solid var(--border)">'+
@@ -478,17 +488,16 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
         '<button class="remove" data-rm="'+p.id+'">Remove</button>'+
       '</div>';
     }).join('');
-    var sub=subtotal(), ship=sub>99?0:9, tax=Math.round(sub*0.05);
+    var sub=subtotal(), ship=60, tax=0; // Assuming standard 60tk delivery
     return '<div class="container">'+
       '<div class="page-head"><h1>Cart</h1><div class="crumb">Home / Cart</div></div>'+
       '<section class="section" style="padding-top:20px"><div class="shop" style="grid-template-columns:1fr 320px">'+
         '<div>'+rows+'</div>'+
         '<div class="filters"><h4>Order summary</h4>'+
           '<div class="row spread" style="padding:5px 0"><span>Subtotal</span><b>'+money(sub)+'</b></div>'+
-          '<div class="row spread" style="padding:5px 0"><span>Shipping</span><b>'+(ship?money(ship):'Free')+'</b></div>'+
-          '<div class="row spread" style="padding:5px 0"><span>Est. tax</span><b>'+money(tax)+'</b></div>'+
+          '<div class="row spread" style="padding:5px 0"><span>Shipping (Est.)</span><b>'+money(ship)+'</b></div>'+
           '<div class="row spread" style="padding:12px 0;border-top:1px solid var(--border);margin-top:8px"><b>Total</b><b style="font-size:20px">'+money(sub+ship+tax)+'</b></div>'+
-          '<button class="btn block" id="checkoutBtn">Checkout</button>'+
+          '<a class="btn block whatsapp" id="whatsappCheckoutBtn" href="'+generateWhatsAppLink()+'" target="_blank">Order on WhatsApp</a>'+
           '<a class="btn ghost block" href="#/shop" style="margin-top:8px">Continue shopping</a>'+
         '</div>'+
       '</div></section></div>';
@@ -499,42 +508,29 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     return '<div class="container">'+
       '<div class="page-head"><h1>Wishlist</h1><div class="crumb">Home / Wishlist</div></div>'+
       '<section class="section" style="padding-top:20px">'+
-      (list.length?gridHtml(list):'<div class="empty"><h3>Nothing saved yet</h3><p>Tap the heart on any product to save it here.</p><a class="btn" href="#/shop">Browse products</a></div>')+
+      (list.length?gridHtml(list):'<div class="empty"><h3>Nothing saved yet</h3><p>Tap the heart on any shoe to save it here.</p><a class="btn" href="#/shop">Browse shoes</a></div>')+
       '</section></div>';
   }
 
   function aboutView(){
     return '<div class="container">'+
-      '<div class="page-head"><h1>About LUXE</h1><div class="crumb">Home / About</div></div>'+
+      '<div class="page-head"><h1>About STEAD</h1><div class="crumb">Home / About</div></div>'+
       '<section class="section" style="padding-top:18px">'+
-      '<p style="max-width:720px;color:var(--muted);font-size:17px">LUXE is a front-end demo store built to show how a modern premium shop should feel \u2014 fast, quiet, and confident. Every screen here is hand-built: the cart, wishlist, filters, dark mode and product pages all work, with no backend behind them.</p>'+
-      '<div class="grid info-grid" style="margin-top:28px">'+
-        [['\uD83C\uDFAF','Design first','Layout, spacing and motion are treated as product features, not decoration.'],
-         ['\u26A1','Fast by default','No framework overhead \u2014 one static page that loads instantly anywhere.'],
-         ['\uD83D\uDD0D','Real interactions','Search, filter, sort, cart and wishlist all behave like the real thing.']].map(function(x){
-          return '<div class="info-card"><div class="emoji">'+x[0]+'</div><h3 style="margin:10px 0 6px">'+x[1]+'</h3><p style="color:var(--muted);margin:0">'+x[2]+'</p></div>';
-        }).join('')+
-      '</div>'+
-      '<div class="grid info-grid" style="margin-top:20px">'+
-        [['12','Demo products'],['6','Categories'],['100%','Client-side']].map(function(x){
-          return '<div class="info-card" style="text-align:center"><div style="font-size:34px;font-weight:800;color:var(--primary)">'+x[0]+'</div><div style="color:var(--muted)">'+x[1]+'</div></div>';
-        }).join('')+
-      '</div></section></div>';
+      '<p style="max-width:720px;color:var(--muted);font-size:17px">STEAD Footwear provides premium quality shoes directly to your doorstep. We believe in comfort, durability, and style. To make shopping easier without online payment hassles, we take orders directly via WhatsApp.</p>'+
+      '</section></div>';
   }
 
   function contactView(){
     return '<div class="container">'+
       '<div class="page-head"><h1>Contact</h1><div class="crumb">Home / Contact</div></div>'+
       '<section class="section" style="padding-top:18px"><div class="pdp">'+
-        '<form id="contactForm" class="info-card">'+
-          '<h3 style="margin:0 0 14px">Send a message</h3>'+
-          '<input class="field" required placeholder="Your name" aria-label="Your name">'+
-          '<input class="field" type="email" required placeholder="you@example.com" aria-label="Email">'+
-          '<textarea class="field" rows="5" required placeholder="How can we help?" aria-label="Message"></textarea>'+
-          '<button class="btn block" type="submit">Send message</button>'+
-        '</form>'+
+        '<div class="info-card">'+
+          '<h3 style="margin:0 0 14px">Get in Touch</h3>'+
+          '<p>The fastest way to reach us is through WhatsApp.</p>'+
+           '<a class="btn block whatsapp" href="https://wa.me/'+WHATSAPP_NUMBER+'" target="_blank">Message on WhatsApp</a>'+
+        '</div>'+
         '<div>'+
-          [['\uD83D\uDCCD','Studio','Ullapara, Sirajganj, Bangladesh'],['\u2709','Email','hello@luxe-demo.test'],['\u23F0','Hours','Sun\u2013Thu, 10:00\u201318:00']].map(function(x){
+          [['\uD83D\uDCCD','Location','Chattogram, Bangladesh'],['\u2709','Email','hello@steadfootwear.com'],['\u23F0','Hours','Sun\u2013Thu, 10:00\u201320:00']].map(function(x){
             return '<div class="info-card" style="margin-bottom:14px"><div class="emoji">'+x[0]+'</div><b style="display:block;margin-top:8px">'+x[1]+'</b><span style="color:var(--muted)">'+x[2]+'</span></div>';
           }).join('')+
         '</div>'+
@@ -552,7 +548,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   function notFoundView(){
     return '<div class="container"><div class="empty" style="padding:90px 20px">'+
       '<div style="font-size:70px;font-weight:800;color:var(--primary)">404</div>'+
-      '<h1>Page not found</h1><p>That link does not exist in this demo.</p>'+
+      '<h1>Page not found</h1><p>That link does not exist.</p>'+
       '<a class="btn" href="#/">Back home</a></div></div>';
   }
 
@@ -560,7 +556,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     var body=document.getElementById('drawerBody'), foot=document.getElementById('drawerFoot');
     if(!cart.length){
       body.innerHTML='<div class="empty"><p>Your cart is empty.</p></div>';
-      foot.innerHTML='<a class="btn ghost block" href="#/shop" data-close="1">Browse products</a>';
+      foot.innerHTML='<a class="btn ghost block" href="#/shop" data-close="1">Browse shoes</a>';
       return;
     }
     body.innerHTML=cart.map(function(it){
@@ -644,13 +640,17 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
       var n=Number(v.textContent)+(t.id==='qPlus'?1:-1);
       v.textContent=Math.max(1,n); return;
     }
-    if(t.id==='checkoutBtn'){
-      cart=[]; save('luxe-cart',cart); syncBadges(); renderDrawer();
-      document.getElementById('view').innerHTML='<div class="container"><div class="empty" style="padding:80px 20px">'+
-        '<div style="font-size:56px">\u2705</div><h1>Order placed</h1>'+
-        '<p>This is a demo, so no payment was taken and nothing will ship.</p>'+
-        '<a class="btn" href="#/shop">Keep browsing</a></div></div>';
-      toast('Demo order placed'); return;
+    // Updated Cart action to avoid resetting cart automatically for WhatsApp
+    if(t.id==='whatsappCheckoutBtn'){
+      toast('Redirecting to WhatsApp...');
+      setTimeout(function(){
+        cart=[]; save('stead-cart',cart); syncBadges(); renderDrawer();
+        document.getElementById('view').innerHTML='<div class="container"><div class="empty" style="padding:80px 20px">'+
+          '<div style="font-size:56px">\u2705</div><h1>Order Details Sent</h1>'+
+          '<p>Your order details have been formatted for WhatsApp.</p>'+
+          '<a class="btn" href="#/shop">Keep browsing</a></div></div>';
+      }, 1000);
+      return;
     }
   });
 
@@ -665,7 +665,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   tb.addEventListener('click',function(){
     theme = theme==='light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme',theme);
-    localStorage.setItem('luxe-theme',theme);
+    localStorage.setItem('stead-theme',theme);
     this.innerHTML = theme==='light' ? '\u263D' : '\u2600';
   });
 
@@ -673,13 +673,6 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     if(e.key==='Enter'){
       var v=this.value.trim();
       go(v?'#/shop?q='+encodeURIComponent(v):'#/shop');
-    }
-  });
-
-  document.addEventListener('submit',function(e){
-    if(e.target.id==='newsForm'||e.target.id==='contactForm'){
-      e.preventDefault(); e.target.reset();
-      toast(e.target.id==='newsForm'?'Subscribed \u2014 welcome to LUXE':'Message sent \u2014 we will reply soon');
     }
   });
 
