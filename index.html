@@ -177,6 +177,15 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   .news{padding:30px 20px}
   .page-head h1{font-size:27px}
 }
+.oos-overlay{
+  position:absolute; inset:0; background:rgba(0,0,0,0.55);
+  display:grid; place-items:center; z-index:3; pointer-events:none;
+}
+.oos-overlay span{
+  background:#ef4444; color:#fff; font-size:12px; font-weight:800;
+  padding:6px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:.08em;
+}
+.btn:disabled{ opacity:0.5; cursor:not-allowed; filter:none; transform:none; }
 </style>
 </head>
 <body>
@@ -245,12 +254,12 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 
   // DUMMY SHOE DATA (Replace images later)
   var P = [
-    {id:1,n:'Classic Black Oxford',c:'formal',b:'Local Premium',p:2500,o:3000,r:4.8,rv:120,bd:'Best Seller',s:'shoe-oxford',cl:['#000000','#4b3621'],fs:1,best:1},
-    {id:2,n:'Urban White Sneakers',c:'sneakers',b:'Nike',p:3500,o:0,r:4.5,rv:95,bd:'Hot',s:'shoe-sneaker1',cl:['#ffffff','#e5e7eb'],best:1},
-    {id:3,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,o:4800,r:4.9,rv:210,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,best:1},
-    {id:4,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,o:0,r:4.2,rv:65,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1},
-    {id:5,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,o:0,r:4.7,rv:150,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,best:1},
-    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1},
+    {id:1,n:'Classic Black Oxford',c:'formal',b:'Local Premium',p:2500,o:3000,r:4.8,rv:120,bd:'Best Seller',s:'shoe-oxford',cl:['#000000','#4b3621'],fs:1,best:1,oos:1},
+    {id:2,n:'Urban White Sneakers',c:'sneakers',b:'Nike',p:3500,o:0,r:4.5,rv:95,bd:'Hot',s:'shoe-sneaker1',cl:['#ffffff','#e5e7eb'],best:1,oos:1},
+    {id:3,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,o:4800,r:4.9,rv:210,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,best:1,oos:1},
+    {id:4,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,o:0,r:4.2,rv:65,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1,oos:1},
+    {id:5,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,o:0,r:4.7,rv:150,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,best:1,oos:1},
+    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1,oos:1},
     {id:7,n:'STEAD Croc-Texture Leather Sandal',c:'sandals',b:'STEAD',p:1100,o:1400,r:4.9,rv:42,bd:'New',s:'sandal-maroon',cl:['#7f1d1d','#000000'],nw:1,best:1}
   ];
 
@@ -326,7 +335,8 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     var on = wish.indexOf(p.id)>-1;
     return '<article class="card">'+
       '<div class="thumb" data-go="#/product/'+p.id+'">'+
-        (p.bd?'<span class="badge">'+esc(p.bd)+'</span>':'')+
+        (p.bd && !p.oos ? '<span class="badge">'+esc(p.bd)+'</span>' : '')+
+        (p.oos ? '<div class="oos-overlay"><span>Out of Stock</span></div>' : '')+
         '<img loading="lazy" alt="'+esc(p.n)+'" src="'+img(p.s,700)+'" onerror="'+FALLBACK+'">'+
         '<button class="wish'+(on?' on':'')+'" data-wish="'+p.id+'" aria-label="Toggle wishlist">'+(on?'\u2665':'\u2661')+'</button>'+
       '</div>'+
@@ -335,7 +345,9 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
         '<h3 data-go="#/product/'+p.id+'">'+esc(p.n)+'</h3>'+
         '<div class="stars">'+stars(p.r)+' <span style="color:var(--muted);font-size:12px">('+p.rv+')</span></div>'+
         '<div class="price"><b>'+money(p.p)+'</b>'+(p.o?'<s>'+money(p.o)+'</s>':'')+'</div>'+
-        '<button class="btn block" data-add="'+p.id+'">Add to Cart</button>'+
+        (p.oos 
+          ? '<button class="btn block" disabled>Out of Stock</button>' 
+          : '<button class="btn block" data-add="'+p.id+'">Add to Cart</button>')+
       '</div></article>';
   }
   function gridHtml(list){
