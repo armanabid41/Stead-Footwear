@@ -186,6 +186,22 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   padding:6px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:.08em;
 }
 .btn:disabled{ opacity:0.5; cursor:not-allowed; filter:none; transform:none; }
+.gallery{position:relative}
+.gal-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:38px; height:38px; border-radius:50%; border:0;
+  background:rgba(0,0,0,0.55); color:#fff; font-size:18px;
+  cursor:pointer; display:grid; place-items:center; z-index:4;
+}
+.gal-btn:hover{background:rgba(0,0,0,0.8)}
+.gal-prev{left:12px}
+.gal-next{right:12px}
+.thumbs{display:flex; gap:10px; margin-top:12px; overflow-x:auto; padding-bottom:4px}
+.thumbs img{
+  width:72px; height:72px; border-radius:12px; object-fit:cover;
+  cursor:pointer; border:2px solid transparent; opacity:0.65; transition:.2s; flex-shrink:0;
+}
+.thumbs img.active, .thumbs img:hover{border-color:var(--primary); opacity:1}
 </style>
 </head>
 <body>
@@ -237,7 +253,9 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 (function(){
   'use strict';
   // WHATSAPP NUMBER - CHANGE THIS TO YOUR NUMBER
-  var WHATSAPP_NUMBER = "8801633715557"; 
+  var WHATSAPP_NUMBER = "8801935025421"; 
+  var SALE_END = new Date('2026-12-10T23:59:59').getTime();
+  function getPrice(p){ return (Date.now() > SALE_END && p.pAfter) ? p.pAfter : p.p; }
   
   var PIC = 'https://picsum.photos/seed/';
   function img(seed){ return './images/' + seed + '.jpg'; }
@@ -245,28 +263,32 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 
   // SHOE CATEGORIES
   var CATS = [
+    {id:'sandals',name:'Sandals',emoji:'\uD83E\uDE74'}
     {id:'sneakers',name:'Sneakers',emoji:'\uD83D\uDC5F'},
     {id:'formal',name:'Formal',emoji:'\uD83D\uDC5E'},
     {id:'boots',name:'Boots',emoji:'\uD83E\uDD7E'},
-    {id:'sandals',name:'Sandals',emoji:'\uD83E\uDE74'}
   ];
   var BRANDS = ['Nike','Adidas','Bata','Apex','Local Premium'];
 
   // DUMMY SHOE DATA (Replace images later)
   var P = [
-    {id:1,n:'Classic Black Oxford',c:'formal',b:'Local Premium',p:2500,o:3000,r:4.8,rv:120,bd:'Best Seller',s:'shoe-oxford',cl:['#000000','#4b3621'],fs:1,best:1,oos:1},
-    {id:2,n:'Urban White Sneakers',c:'sneakers',b:'Nike',p:3500,o:0,r:4.5,rv:95,bd:'Hot',s:'shoe-sneaker1',cl:['#ffffff','#e5e7eb'],best:1,oos:1},
-    {id:3,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,o:4800,r:4.9,rv:210,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,best:1,oos:1},
-    {id:4,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,o:0,r:4.2,rv:65,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1,oos:1},
-    {id:5,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,o:0,r:4.7,rv:150,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,best:1,oos:1},
-    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1,oos:1},
-    {id:7,n:'STEAD Croc-Texture Leather Sandal',c:'sandals',b:'STEAD',p:1100,o:1400,r:4.9,rv:42,bd:'New',s:'sandal-maroon',cl:['#7f1d1d','#000000'],nw:1,best:1}
+    {id:1,n:'STEAD Premium Wine Red Crocodile Cross-Strap Sandal',c:'sandals',b:'STEAD',p:800,pAfter:1200,o:1200,r:4.9,rv:2,bd:'New',s:'Wine-Red-Croc',imgs:['Wine-Red-Croc', 'Wine-Red-Croc-2', 'Wine-Red-Croc-3'],cl:['#7f1d1d','#000000'],nw:1,best:1},
+    {id:2,n:'STEAD Crocodile Textured Slide',c:'sandals',b:'STEAD',p:900,pAfter:1400,o:1400,r:4.9,rv:1,bd:'New',s:'Croc-Textured-Slide',imgs:['Croc-Textured-Slide', 'Croc-Textured-Slide-2', 'Croc-Textured-Slide-3', 'Croc-Textured-Slide-4'],cl:['#7f1d1d','#000000'],nw:1,best:1},
+    {id:3,n:'STEAD Premium Crocodile Texture Cross Strap Sandal',c:'sandals',b:'STEAD',p:900,pAfter:1400,o:1400,r:4.9,rv:4,bd:'New',s:'Premium-Croc-Text-Cross',imgs:['Premium-Croc-Text-Cross', 'Premium-Croc-Text-Cross-2', 'Premium-Croc-Text-Cross-3', 'Premium-Croc-Text-Cross-4'],cl:['#7f1d1d','#000000'],nw:1,best:1},
+    {id:4,n:'STEAD Classic Black Double Strap Sandal',c:'sandals',b:'STEAD',p:750,pAfter:900,o:900,r:4,rv:2,bd:'New',s:'Classic-Blk-Double-Strap',imgs:['Classic-Blk-Double-Strap', 'Classic-Blk-Double-Strap-2', 'Classic-Blk-Double-Strap-3', 'Classic-Blk-Double-Strap-4'],cl:['#7f1d1d','#000000'],nw:1,best:1},
+    {id:5,n:'STEAD Premium Brown Double Buckle Sandal',c:'sandals',b:'STEAD',p:750,pAfter:900,o:900,r:4.9,rv:8,bd:'New',s:'Classic-Brwn-Double-Strap',imgs:['Classic-Brwn-Double-Strap', 'Classic-Brwn-Double-Strap-2', 'Classic-Brwn-Double-Strap-3', 'Classic-Brwn-Double-Strap-4'],cl:['#7f1d1d','#000000'],nw:1,best:1},
+    {id:6,n:'Classic Black Oxford',c:'formal',b:'Local Premium',p:2500,pAfter:3000,o:3000,r:4.8,rv:12,bd:'Best Seller',s:'shoe-oxford',cl:['#000000','#4b3621'],fs:1,oos:1},
+    {id:7,n:'Urban White Sneakers',c:'sneakers',b:'Nike',p:2999,pAfter:3500,o:3500,r:4.5,rv:9,bd:'Hot',s:'shoe-sneaker1',cl:['#ffffff','#e5e7eb'],oos:1},
+    {id:8,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,pAfter:4800,o:4800,r:4.9,rv:6,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,oos:1},
+    {id:9,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,pAfter:1600,o:1800,r:4.2,rv:4,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1,oos:1},
+    {id:10,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,pAfter:3000,o:3000,r:4.7,rv:10,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,oos:1},
+    {id:11,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,pAfter:6200,o:6200,r:4.6,rv:2,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1,oos:1},
   ];
 
   var REVIEWS = [
     {nm:'Ayesha R.',rl:'Verified Buyer',t:'The leather quality is exactly as shown. Perfect fit.'},
-    {nm:'Tanvir H.',rl:'Verified Buyer',t:'Great sneakers for everyday use. Delivery was very fast.'},
-    {nm:'Nusrat J.',rl:'Verified Buyer',t:'Ordering via WhatsApp was so easy and transparent. Highly recommended.'}
+    {nm:'Tanvir H.',rl:'Verified Buyer',t:'Delivery was fast.Good service'},
+    {nm:'Nusrat J.',rl:'Verified Buyer',t:'Highly recommended.'}
   ];
 
   var FAQS = [
@@ -443,23 +465,38 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     var p=find(r.arg);
     if(!p) return notFoundView();
     var on=wish.indexOf(p.id)>-1;
+    var galleryImgs = (p.imgs && p.imgs.length) ? p.imgs : [p.s];
+    var curPrice = (typeof getPrice === 'function') ? getPrice(p) : p.p;
     var rel=P.filter(function(x){ return x.c===p.c && x.id!==p.id; }).slice(0,4);
     return '<div class="container">'+
       '<div class="page-head"><div class="crumb"><a href="#/">Home</a> / <a href="#/shop?cat='+p.c+'">'+esc(p.c)+'</a> / '+esc(p.n)+'</div></div>'+
       '<section class="section" style="padding-top:20px"><div class="pdp">'+
-        '<div><div class="gallery"><img alt="'+esc(p.n)+'" src="'+img(p.s,900)+'" onerror="'+FALLBACK+'"></div></div>'+
+        '<div>'+
+          '<div class="gallery">'+
+            (p.oos ? '<div class="oos-overlay"><span>Out of Stock</span></div>' : '')+
+            '<img id="mainPdpImg" alt="'+esc(p.n)+'" src="'+img(galleryImgs[0])+'" data-idx="0" data-list="'+esc(galleryImgs.join(','))+'" onerror="'+FALLBACK+'">'+
+            (galleryImgs.length > 1 ? '<button class="gal-btn gal-prev" id="galPrev">&#10094;</button><button class="gal-btn gal-next" id="galNext">&#10095;</button>' : '')+
+          '</div>'+
+          (galleryImgs.length > 1 ? '<div class="thumbs" id="pdpThumbs">'+
+            galleryImgs.map(function(im, idx){
+              return '<img src="'+img(im)+'" class="'+(idx===0?'active':'')+'" data-thumb="'+idx+'" alt="View '+(idx+1)+'" onerror="'+FALLBACK+'">';
+            }).join('')+
+          '</div>' : '')+
+        '</div>'+
         '<div>'+
           '<span class="cat-tag">'+esc(p.b)+'</span>'+
           '<h1 style="font-family:\'Plus Jakarta Sans\',Inter,sans-serif;font-size:30px;margin:6px 0 8px;letter-spacing:-.02em">'+esc(p.n)+'</h1>'+
           '<div class="row"><span class="stars">'+stars(p.r)+'</span><span style="color:var(--muted);font-size:14px">'+p.rv+' reviews</span></div>'+
-          '<div class="price" style="margin:14px 0"><b style="font-size:30px">'+money(p.p)+'</b>'+(p.o?'<s>'+money(p.o)+'</s>':'')+(p.o?'<span style="color:#16a34a;font-weight:700;font-size:14px">Save '+money(p.o-p.p)+'</span>':'')+'</div>'+
+          '<div class="price" style="margin:14px 0"><b style="font-size:30px">'+money(curPrice)+'</b>'+(p.o?'<s>'+money(p.o)+'</s>':'')+(p.o && p.o > curPrice?'<span style="color:#16a34a;font-weight:700;font-size:14px">Save '+money(p.o-curPrice)+'</span>':'')+'</div>'+
           '<p style="color:var(--muted)">Premium quality footwear, designed for maximum comfort and durability.</p>'+
           '<div style="margin:18px 0"><div class="cat-tag" style="margin-bottom:8px">Color</div><div class="row" id="swatches">'+
             p.cl.map(function(c,i){ return '<button class="swatch'+(i===0?' active':'')+'" data-sw="'+i+'" style="background:'+c+'" aria-label="Color option"></button>'; }).join('')+
           '</div></div>'+
           '<div class="row wrap" style="margin:20px 0">'+
             '<div class="qty"><button id="qMinus">\u2212</button><span id="qVal">1</span><button id="qPlus">+</button></div>'+
-            '<button class="btn" id="pdpAdd" data-add-q="'+p.id+'">Add to Cart</button>'+
+            (p.oos
+              ? '<button class="btn" disabled>Out of Stock</button>'
+              : '<button class="btn" id="pdpAdd" data-add-q="'+p.id+'">Add to Cart</button>')+
             '<button class="btn ghost" data-wish="'+p.id+'">'+(on?'\u2665 Saved':'\u2661 Wishlist')+'</button>'+
           '</div>'+
           '<div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">'+
@@ -472,7 +509,6 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
       (rel.length?'<section class="section" style="padding-top:0"><h2 class="h2">You may also like</h2><p class="sub">More from '+esc(p.c)+'.</p>'+gridHtml(rel)+'</section>':'')+
     '</div>';
   }
-
   function generateWhatsAppLink(){
       var msg = "Hello STEAD Footwear,\nI want to order the following items:\n\n";
       cart.forEach(function(it){
@@ -590,13 +626,20 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 
   var cdTimer;
   function startCountdown(){
-    var end=new Date(); end.setHours(23,59,59,999);
     function tick(){
       var el=document.getElementById('timer');
       if(!el){ clearInterval(cdTimer); return; }
-      var d=Math.max(0,end-new Date());
-      var h=Math.floor(d/3600000), m=Math.floor(d%3600000/60000), s=Math.floor(d%60000/1000);
-      el.innerHTML=[[h,'Hours'],[m,'Mins'],[s,'Secs']].map(function(x){
+      var d=Math.max(0, SALE_END - Date.now());
+      if(d === 0){
+        el.innerHTML = '<div style="padding:8px 16px"><b>Sale Ended</b></div>';
+        clearInterval(cdTimer);
+        return;
+      }
+      var days=Math.floor(d/86400000);
+      var h=Math.floor(d%86400000/3600000);
+      var m=Math.floor(d%3600000/60000);
+      var s=Math.floor(d%60000/1000);
+      el.innerHTML=[[days,'Days'],[h,'Hours'],[m,'Mins'],[s,'Secs']].map(function(x){
         return '<div><b>'+String(x[0]).padStart(2,'0')+'</b><span>'+x[1]+'</span></div>';
       }).join('');
     }
@@ -664,6 +707,19 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
           '<p>Your order details have been formatted for WhatsApp.</p>'+
           '<a class="btn" href="#/shop">Keep browsing</a></div></div>';
       }, 1000);
+      return;
+    }
+    var th = t.closest('[data-thumb]');
+    if(th || t.id==='galPrev' || t.id==='galNext'){
+      var mainImg = document.getElementById('mainPdpImg');
+      if(!mainImg) return;
+      var list = mainImg.getAttribute('data-list').split(',');
+      var cur = Number(mainImg.getAttribute('data-idx')) || 0;
+      var nextIdx = th ? Number(th.getAttribute('data-thumb')) : (t.id==='galNext' ? (cur+1)%list.length : (cur-1+list.length)%list.length);
+      mainImg.src = img(list[nextIdx]);
+      mainImg.setAttribute('data-idx', nextIdx);
+      var allTh = document.querySelectorAll('#pdpThumbs img');
+      for(var k=0; k<allTh.length; k++) allTh[k].classList.toggle('active', k===nextIdx);
       return;
     }
   });
