@@ -213,6 +213,12 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 .social-card b{display:block;font-size:19px}
 .social-card span{font-size:13px;opacity:.9}
 @media(max-width:600px){.social-grid{grid-template-columns:1fr}}
+.cart-layout{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+@media(max-width:960px){
+  .cart-layout{grid-template-columns:1fr}
+  .cart-layout .line{flex-wrap:wrap}
+  .cart-layout .line .info{flex:1 1 calc(100% - 80px)}
+}
 </style>
 </head>
 <body>
@@ -566,7 +572,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     var sub=subtotal(), ship=60, tax=0; // Assuming standard 60tk delivery
     return '<div class="container">'+
       '<div class="page-head"><h1>Cart</h1><div class="crumb">Home / Cart</div></div>'+
-      '<section class="section" style="padding-top:20px"><div class="shop" style="grid-template-columns:1fr 320px">'+
+      '<section class="section" style="padding-top:20px"><div class="cart-layout">'+
         '<div>'+rows+'</div>'+
         '<div class="filters"><h4>Order summary</h4>'+
           '<div class="row spread" style="padding:5px 0"><span>Subtotal</span><b>'+money(sub)+'</b></div>'+
