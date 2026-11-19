@@ -66,7 +66,7 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--surface);border-bot
 .hero .btn{background:#fff;color:#111827}
 .hero .btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
 .hero-badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
-.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} /* 3 cats for shoes */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px} /* 3 cats for shoes */
 .cat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 12px;text-align:center;cursor:pointer;transition:.18s}
 .cat:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--primary)}
 .cat .emoji{font-size:26px}
@@ -208,7 +208,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
         <div class="brand">STEAD</div>
         <p>Premium footwear designed for ultimate comfort and style. Browse our catalog and order directly via WhatsApp.</p>
       </div>
-      <div><h4>Shop</h4><a href="#/shop">All Products</a><a href="#/shop?cat=sneakers">Sneakers</a><a href="#/shop?cat=formal">Formal</a></div>
+      <div><h4>Shop</h4><a href="#/shop">All Products</a><a href="#/shop?cat=sneakers">Sneakers</a><a href="#/shop?cat=formal">Formal</a><a href="#/shop?cat=sandals">Sandals</a></div>
       <div><h4>Company</h4><a href="#/about">About</a><a href="#/contact">Contact</a><a href="#/faq">FAQ</a></div>
       <div><h4>Support</h4><a href="#/faq">How to Order</a><a href="#/faq">Shipping & Returns</a><a href="#/contact">Help Center</a></div>
     </div>
@@ -228,7 +228,7 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
 (function(){
   'use strict';
   // WHATSAPP NUMBER - CHANGE THIS TO YOUR NUMBER
-  var WHATSAPP_NUMBER = "8801700000000"; 
+  var WHATSAPP_NUMBER = "8801633715557"; 
   
   var PIC = 'https://picsum.photos/seed/';
   function img(seed,s){ return PIC + seed + '/' + (s||700) + '/' + (s||700); }
@@ -238,7 +238,8 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
   var CATS = [
     {id:'sneakers',name:'Sneakers',emoji:'\uD83D\uDC5F'},
     {id:'formal',name:'Formal',emoji:'\uD83D\uDC5E'},
-    {id:'boots',name:'Boots',emoji:'\uD83E\uDD7E'}
+    {id:'boots',name:'Boots',emoji:'\uD83E\uDD7E'},
+    {id:'sandals',name:'Sandals',emoji:'\uD83E\uDE74'}
   ];
   var BRANDS = ['Nike','Adidas','Bata','Apex','Local Premium'];
 
@@ -249,7 +250,8 @@ html[data-theme="dark"] .toast{background:#eef1f6;color:#0e1116}
     {id:3,n:'Premium Leather Boots',c:'boots',b:'Apex',p:4200,o:4800,r:4.9,rv:210,bd:'Sale',s:'shoe-boot1',cl:['#4b3621','#000000'],fs:1,best:1},
     {id:4,n:'Casual Canvas Sneakers',c:'sneakers',b:'Bata',p:1200,o:0,r:4.2,rv:65,bd:'',s:'shoe-sneaker2',cl:['#111827','#3b82f6'],nw:1},
     {id:5,n:'Tan Brogue Shoes',c:'formal',b:'Local Premium',p:2800,o:0,r:4.7,rv:150,bd:'New',s:'shoe-brogue',cl:['#a38068','#4b3621'],nw:1,best:1},
-    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1}
+    {id:6,n:'Outdoor Hiking Boots',c:'boots',b:'Adidas',p:5500,o:6200,r:4.6,rv:88,bd:'Sale',s:'shoe-boot2',cl:['#374151','#111827'],fs:1},
+    {id:7,n:'STEAD Croc-Texture Leather Sandal',c:'sandals',b:'STEAD',p:1100,o:1400,r:4.9,rv:42,bd:'New',s:'sandal-maroon',cl:['#7f1d1d','#000000'],nw:1,best:1}
   ];
 
   var REVIEWS = [
