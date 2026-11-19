@@ -2,7 +2,7 @@
 
 A premium, fully interactive **front-end only** eCommerce demo store.
 
-**Live site:** https://sm-masud-rana.github.io/premium-ecommerce-demo/
+**Live site:** [https://sm-masud-rana.github.io/premium-ecommerce-demo/](https://armanabid41.github.io/Stead-Footwear/#/)
 
 ## How it runs
 
